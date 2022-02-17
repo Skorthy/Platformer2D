@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     public float jumpSpeed = 500f;
     public bool isGrounded;
+    public bool isWalledLeft;
+    public bool isWalledRight;
 
     void Update()
     {
@@ -30,6 +32,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpSpeed);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space) && isWalledLeft)
+        {
+            rb.AddForce(Vector3.up * jumpSpeed * 0.8f);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space) && isWalledRight)
+        {
+            rb.AddForce(Vector3.up * jumpSpeed * 0.8f);
         }
     }
 }
